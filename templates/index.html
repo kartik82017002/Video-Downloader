@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Video Downloader — Pro</title>
+  <!-- relative path works for both Live Server and Flask -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">VD</div>
+        <div>
+          <h1>Video Downloader</h1>
+          <p class="tag">High-quality downloads • Safe • Local</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="themeToggle" class="btn ghost">Toggle Theme</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero card">
+        <div class="hero-left">
+          <h2>Download videos in best quality</h2>
+          <p class="muted">Paste a public video URL, choose quality and start. Downloads run in background — progress tracked live.</p>
+
+          <div class="form-row">
+            <input id="url" placeholder="Paste video URL (YouTube, etc.)" autocomplete="off" />
+            <select id="quality">
+              <option value="best">Auto (Best)</option>
+              <option value="2160">2160 (4K)</option>
+              <option value="1440">1440</option>
+              <option value="1080">1080</option>
+              <option value="720">720</option>
+              <option value="480">480</option>
+            </select>
+            <button id="startBtn" class="btn primary">Start</button>
+          </div>
+
+          <div class="helper">
+            <span class="small muted">Tip:</span>
+            <span class="small">For large files, prefer background downloads and check history to get the file when ready.</span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <!-- relative path; it's okay if image missing -->
+          <img src="/static/img/illustration.png" onerror="this.style.display='none'">
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card tasks" aria-live="polite">
+          <div class="card-header">
+            <h3>Active Downloads</h3>
+            <button id="clearTasks" class="btn ghost">Clear finished</button>
+          </div>
+          <div id="taskList" class="task-list">
+            <div class="empty">No active downloads yet — start one above.</div>
+          </div>
+        </div>
+
+        <div class="card history">
+          <div class="card-header">
+            <h3>Download History</h3>
+
+<div class="history-buttons">
+    <button id="refreshHistory" class="btn ghost">🔄 Refresh</button>
+    <button id="clearHistory" class="btn danger">🗑 Clear History</button>
+</div>
+          <ul id="historyList" class="history-list">
+            <li class="empty">History is empty — completed downloads will appear here.</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Your Downloader — Use responsibly. </div>
+        <div class="small muted">Local storage only — files kept temporarily on disk.</div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- relative script path works with both servers -->
+<script src="/static/js/app.js"></script>
+</body>
+</html>
